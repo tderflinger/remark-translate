@@ -1,0 +1,23 @@
+{
+    "name": "remark-translate",
+    "version": "0.5.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "node test.mjs"
+    },
+    "author": "Thomas Derflinger",
+    "license": "MIT",
+    "dependencies": {
+      "deepl-node": "1.3.1",
+      "dotenv": "16.0.1",
+      "js-yaml": "4.1.0",
+      "rehype-stringify": "9.0.3",
+      "remark-frontmatter": "4.0.1",
+      "remark-parse": "10.0.1",
+      "remark-stringify": "10.0.2",
+      "slugify": "1.6.5",
+      "unified": "10.1.2"
+    }
+  }
+  
