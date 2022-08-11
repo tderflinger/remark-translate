@@ -5,6 +5,8 @@ translation API of [DeepL](https://www.deepl.com/).
 
 In order to use this plugin, you need to create an API key and register with DeepL.
 
+Note: This is the first version of 'remark-translate', so please give feedback if you find any bugs.
+
 ## Installation
 
 ```js
@@ -24,9 +26,11 @@ These are the options:
 For security, the API key is not displayed in the source code but used from the environment
 variable `DEEPL_API_KEY`.
 
+This is an example for translating markdown text from English to Spanish:
+
 ```js
 const authKey = process.env.DEEPL_KEY;
-const options = { sourceLang: 'en', destLang: 'fr', apiKey: authKey };
+const options = { sourceLang: 'en', destLang: 'es', apiKey: authKey };
 
 const file = await unified()
     .use(remarkParse)
@@ -35,6 +39,8 @@ const file = await unified()
     .use(remarkTranslate, options)
     .process(data);
 ```
+
+Note that any yaml included in the markdown is also translated.
 
 ## Testing
 
