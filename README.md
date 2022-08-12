@@ -5,11 +5,11 @@ translation API of [DeepL](https://www.deepl.com/).
 
 In order to use this plugin, you need to create an API key and register with DeepL.
 
-Note: This is the first version of 'remark-translate', so please give feedback if you find any bugs.
+Note: This is the first version of `remark-translate`, so please give feedback if you find any bugs.
 
 ## Installation
 
-```js
+```bash
 npm install remark-translate
 ```
 
@@ -22,6 +22,7 @@ These are the options:
 - sourceLang: the language of the source markdown text
 - destLang: the language of the translated text
 - apiKey: the DeepL API token
+- yamlTranslate (optional): array with the yaml frontmatter keys to be translated
 
 For security, the API key is not displayed in the source code but used from the environment
 variable `DEEPL_API_KEY`.
@@ -30,7 +31,7 @@ This is an example for translating markdown text from English to Spanish:
 
 ```js
 const authKey = process.env.DEEPL_KEY;
-const options = { sourceLang: 'en', destLang: 'es', apiKey: authKey };
+const options = { sourceLang: 'en', destLang: 'es', apiKey: authKey, yamlTranslate: ["title", "description"] };
 
 const file = await unified()
     .use(remarkParse)
@@ -40,7 +41,9 @@ const file = await unified()
     .process(data);
 ```
 
-Note that any yaml included in the markdown is also translated.
+Note that any yaml frontmatter fields as defined in `yamlTranslate` options are also translated.
+
+This library is ESM only, meaning you cannot import it using `require` in a Node application.
 
 ## Testing
 

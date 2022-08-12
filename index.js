@@ -1,10 +1,10 @@
 import * as deepl from 'deepl-node';
 import yaml from 'js-yaml';
-import slugify from 'slugify';
 
 let translator;
 let sourceLang;
 let destLang;
+let yamlTranslate;
 
 const setDeepL = (options) => {
   const { apiKey } = options;
@@ -64,16 +64,21 @@ const translateYaml = async (node) => {
   const yamlContent = node.value;
   const yamlObject = yaml.load(yamlContent);
   const yamlObjectCopy = { ...yamlObject };
-  const translatedTitle = await translate(yamlObject.title);
-  const translatedDescription = await translate(yamlObject.description);
-  yamlObjectCopy.title = translatedTitle.text;
-  yamlObjectCopy.description = translatedDescription.text;
+
+  for (const item of yamlTranslate) {
+    if (yamlObject[item]) {
+      const result = await translate(yamlObject[item]);
+      yamlObjectCopy[item] = result.text;
+    }
+  }
+
+  /*
   yamlObjectCopy.lang = destLang;
-  const translatedSlug = slugify(translatedTitle.text, {
+  const translatedSlug = slugify(yamlObjectCopy["title"], {
     lower: true,
     locale: destLang,
   });
-  yamlObjectCopy.path = `/${destLang}/${translatedSlug}`;
+  yamlObjectCopy.path = `/${destLang}/${translatedSlug}`; */
   const dumpedYaml = yaml.dump(yamlObjectCopy, { forceQuotes: true });
   newNode.value = dumpedYaml;
   return newNode;
@@ -84,7 +89,6 @@ const walkRoot = async (root) => {
     const newRoot = { ...root };
     const newRootItems = [];
 
-    // eslint-disable-next-line no-restricted-syntax
     for (const node of root.children) {
       if (node.type === 'heading') {
         newRootItems.push(visitor(node));
@@ -105,6 +109,7 @@ const walkRoot = async (root) => {
 
 export default function remarkTranslate(options) {
   setDeepL(options);
+  yamlTranslate = options?.yamlTranslate;
 
   return async function (root) {
     return new Promise((resolve, reject) => {
