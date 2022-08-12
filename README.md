@@ -43,7 +43,8 @@ const file = await unified()
 
 Note that any yaml frontmatter fields as defined in `yamlTranslate` options are also translated.
 
-This library is ESM only, meaning you cannot import it using `require` in a Node application.
+This library is ESM only, meaning you cannot import it using `require` in a Node application. Therefore, you need
+at a minimum a Node version that supports ESMs.
 
 ## Testing
 
@@ -55,6 +56,10 @@ npm run test
 
 ## References
 
-- Remark: https://remark.js.org
 - Unified: https://github.com/unifiedjs
+- Remark: https://remark.js.org
 - DeepL: https://www.deepl.com
+
+## License
+
+MIT License
