@@ -1,6 +1,8 @@
-# remark-translate
+![remark-translate logo](./assets/svg/logo.svg)
 
-A simple plugin for remark to translate markdown text to other languages. It uses the
+***
+
+**Remark-translate** is a simple plugin for remark to translate markdown text to other languages. It uses the
 translation API of [DeepL](https://www.deepl.com/).
 
 In order to use this plugin, you need to create an API key and register with DeepL.
