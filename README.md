@@ -54,11 +54,21 @@ You can test the plugin by running the following command:
 npm run test
 ```
 
+## Todos
+
+Currently, the best results are with pure text paragraphs without any additional markdown elements like links or emphasis.
+These markdown elements influence the whole sentence translation because they are currently translated independently.
+
+I hope to fix this in the future.
+
+Also, I hope to add other translation providers like AWS Translate in the future.
+
 ## References
 
 - Unified: https://github.com/unifiedjs
 - Remark: https://remark.js.org
 - DeepL: https://www.deepl.com
+- js-yaml: https://github.com/nodeca/js-yaml
 
 ## License
 
