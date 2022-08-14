@@ -1,5 +1,5 @@
 ![remark-translate logo](./assets/svg/logo-new.svg)
-***
+
 [![npm](https://img.shields.io/npm/l/remark-translate)](https://www.npmjs.com/package/remark-translate)
 
 **Remark-translate** is a simple plugin for remark to translate markdown text to other languages. It uses the
