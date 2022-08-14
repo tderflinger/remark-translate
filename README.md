@@ -1,4 +1,4 @@
-![remark-translate logo](./assets/svg/logo.svg)
+![remark-translate logo](./assets/svg/logo-new.svg)
 ***
 
 **Remark-translate** is a simple plugin for remark to translate markdown text to other languages. It uses the
